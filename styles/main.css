@@ -1,0 +1,78 @@
+/* 現代風格 CSS */
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+header {
+  background: linear-gradient(to right, #0077b6, #00b4d8);
+  color: white;
+  text-align: center;
+  padding: 2rem 0;
+}
+
+#gallery {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.slider {
+  position: relative;
+  max-width: 100%;
+  margin: auto;
+}
+
+.slide {
+  width: 100%;
+  display: none;
+}
+
+.slide.active {
+  display: block;
+}
+
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  padding: 1rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+#content {
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #eee;
+  margin-top: 2rem;
+}
+
+/* 響應式設計 */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.5rem;
+  }
+  #content {
+    padding: 1rem;
+  }
+}
