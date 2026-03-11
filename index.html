@@ -1,62 +1,173 @@
-<!DOCTYPE html>
-<html lang="zh-TW">
+<!doctype html>
+<html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>澎湖旅行日記</title>
-  <link rel="stylesheet" href="styles/main.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>澎湖 3 天旅遊規劃｜travel-penghu</title>
+  <style>
+    :root {
+      --bg: #f6fbff;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --primary: #0ea5e9;
+      --accent: #f97316;
+      --ok: #16a34a;
+      --shadow: 0 10px 25px rgba(2, 132, 199, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      background: linear-gradient(180deg, #e0f2fe 0%, var(--bg) 30%, #ffffff 100%);
+      color: var(--text);
+      line-height: 1.65;
+    }
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 28px 18px 64px;
+    }
+    .hero {
+      background: radial-gradient(circle at top right, rgba(249, 115, 22, .15), transparent 40%),
+                  radial-gradient(circle at top left, rgba(14, 165, 233, .2), transparent 45%),
+                  var(--card);
+      border-radius: 18px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+      border: 1px solid #e2e8f0;
+    }
+    h1 { margin: 0 0 8px; font-size: clamp(1.5rem, 2.3vw, 2.2rem); }
+    h2 { margin: 24px 0 10px; font-size: 1.25rem; }
+    .muted { color: var(--muted); }
+    .badge {
+      display: inline-block;
+      background: #e0f2fe;
+      color: #075985;
+      border: 1px solid #bae6fd;
+      border-radius: 999px;
+      padding: 4px 10px;
+      margin-right: 6px;
+      font-size: 0.88rem;
+    }
+    .grid {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 16px;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, .05);
+    }
+    .timeline {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .timeline li { margin: 6px 0; }
+    .day {
+      margin-top: 24px;
+      background: var(--card);
+      border: 1px solid #e2e8f0;
+      border-left: 6px solid var(--primary);
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, .05);
+    }
+    .day h3 { margin: 0 0 8px; font-size: 1.1rem; }
+    .tip {
+      margin-top: 18px;
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-radius: 12px;
+      padding: 14px;
+    }
+    .tip strong { color: #9a3412; }
+    .ok { color: var(--ok); font-weight: 600; }
+    footer {
+      margin-top: 26px;
+      font-size: .9rem;
+      color: #64748b;
+    }
+    a { color: #0369a1; }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>澎湖旅行日記</h1>
-    <p>探索台灣最美的海島風光</p>
-  </header>
+  <main class="wrap">
+    <section class="hero">
+      <h1>澎湖 3 天旅遊規劃（八月初）</h1>
+      <p class="muted">主題：海景放鬆、在地美食、花火節夜間行程。適合第一次到澎湖、節奏不趕的玩法。</p>
+      <div>
+        <span class="badge">3 天 2 夜</span>
+        <span class="badge">本島為主</span>
+        <span class="badge">含花火節</span>
+      </div>
 
-  <section id="gallery">
-    <div class="slider">
-      <img src="images/gallery/1.jpg" alt="澎湖風景1" class="slide active">
-      <img src="images/gallery/2.jpg" alt="澎湖風景2" class="slide">
-      <img src="images/gallery/3.jpg" alt="澎湖風景3" class="slide">
-      <button class="prev" onclick="changeSlide(-1)">❮</button>
-      <button class="next" onclick="changeSlide(1)">❯</button>
-    </div>
-  </section>
+      <div class="grid">
+        <article class="card">
+          <h2>行前建議</h2>
+          <ul class="timeline">
+            <li>交通：建議早去午回（飛機優先，船班備案）。</li>
+            <li>住宿：馬公市區，夜間移動與吃飯最方便。</li>
+            <li>移動：機車最彈性；怕曬可考慮汽車。</li>
+            <li>必備：防曬、防風外套、暈船藥、水壺。</li>
+          </ul>
+        </article>
 
-  <section id="content">
-    <h2>3天澎湖旅遊行程</h2>
-    <p>這次旅行特別加入了澎湖花火節的精彩表演，讓你體驗海島的浪漫夜晚！</p>
+        <article class="card">
+          <h2>預算抓法（每人）</h2>
+          <ul class="timeline">
+            <li>交通：NT$2,500–6,000（依城市/航班）</li>
+            <li>住宿：NT$2,000–5,000（2 晚）</li>
+            <li>餐食：NT$1,500–2,500</li>
+            <li>租車/油資/門票：NT$1,000–2,000</li>
+          </ul>
+          <p class="ok">總計約 NT$7,000–15,000 / 人</p>
+        </article>
+      </div>
+    </section>
 
-    <h3>Day 1：抵達與海島探索</h3>
-    <ul>
-      <li>上午：抵達馬公機場，前往飯店辦理入住</li>
-      <li>下午：參觀馬公市區，逛逛馬公漁會市場</li>
-      <li>晚上：欣賞「海島夜市」，品嚐在地美食</li>
-    </ul>
+    <section class="day">
+      <h3>Day 1｜馬公市區 + 觀音亭花火節</h3>
+      <ol class="timeline">
+        <li><strong>上午：</strong>抵達澎湖 → 飯店放行李 → 市區午餐（海鮮粥/小管麵線）。</li>
+        <li><strong>下午：</strong>篤行十村、中央老街、四眼井、天后宮散步拍照。</li>
+        <li><strong>傍晚：</strong>觀音亭園區卡位（建議提早 60–90 分鐘）。</li>
+        <li><strong>晚上：</strong>花火節主場觀賞 + 回市區吃宵夜（仙草、鹹酥雞、烤物）。</li>
+      </ol>
+    </section>
 
-    <h3>Day 2：風景與文化之旅</h3>
-    <ul>
-      <li>上午：參觀「望安島」，體驗傳統漁村文化</li>
-      <li>下午：前往「大倉島」，欣賞海蝕地形</li>
-      <li>晚上：花火節預演（若當天有）</li>
-    </ul>
+    <section class="day">
+      <h3>Day 2｜北環經典海景路線</h3>
+      <ol class="timeline">
+        <li><strong>上午：</strong>跨海大橋 → 通梁古榕 → 大菓葉玄武岩。</li>
+        <li><strong>中午：</strong>西嶼一帶海鮮或在地麵店。</li>
+        <li><strong>下午：</strong>池西岩瀑、二崁聚落、小池角雙曲橋看海。</li>
+        <li><strong>傍晚：</strong>西嶼燈塔夕陽（風大請注意安全）。</li>
+        <li><strong>晚上：</strong>回馬公自由活動（伴手禮採買、按摩放鬆）。</li>
+      </ol>
+    </section>
 
-    <h3>Day 3：花火節盛宴</h3>
-    <ul>
-      <li>上午：自由活動，可前往「漁人碼頭」拍照</li>
-      <li>下午：前往「花火節主會場」，準備觀賞表演</li>
-      <li>晚上：欣賞「澎湖花火節」大型煙火秀</li>
-    </ul>
+    <section class="day">
+      <h3>Day 3｜南海輕跳島 / 本島慢遊 + 回程</h3>
+      <ol class="timeline">
+        <li><strong>方案 A（跳島）：</strong>七美 + 望安一日（需早起，注意海況）。</li>
+        <li><strong>方案 B（本島）：</strong>山水沙灘、隘門沙灘、林投公園悠閒收尾。</li>
+        <li><strong>下午：</strong>回市區吃最後一餐，預留時間還車/登機。</li>
+      </ol>
+    </section>
 
-    <h2>花火節資訊</h2>
-    <p><strong>日期：</strong>2026年3月12日（星期五）</p>
-    <p><strong>地點：</strong>馬公市海濱公園</p>
-    <p><strong>表演內容：</strong>國際煙火秀、傳統民俗表演、音樂演奏</p>
-  </section>
+    <section class="tip">
+      <strong>花火節提醒：</strong>
+      八月初通常仍在活動檔期內，但實際施放日期/時間、無人機場次、是否因天候取消，請以「澎湖國際海上花火節官方公告」為準。
+    </section>
 
-  <footer>
-    <p>&copy; 2026 澎湖旅行日記</p>
-  </footer>
-
-  <script src="js/main.js"></script>
+    <footer>
+      Built for <strong>travel-penghu</strong> · GitHub Pages ready.
+    </footer>
+  </main>
 </body>
 </html>
