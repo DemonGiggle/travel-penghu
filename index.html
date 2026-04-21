@@ -93,6 +93,30 @@
       color: #64748b;
     }
     a { color: #0369a1; }
+
+    /* Collapsible sections: default closed, remember via localStorage */
+    .collapsible-toggle {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      background: transparent;
+      border: none;
+      padding: 0;
+      font-size: inherit;
+      text-align: left;
+      cursor: pointer;
+    }
+    .collapsible-toggle:focus { outline: 2px solid rgba(14,165,233,0.25); border-radius: 6px; }
+    .collapsible-toggle .title { font-weight: 700; }
+    .collapsible-toggle .chev { display: inline-block; transition: transform .18s ease; margin-left: 8px; }
+    .collapsible-content { margin-top: 12px; }
+    .card.collapsed .collapsible-content,
+    .day.collapsed .collapsible-content,
+    .tip.collapsed .collapsible-content { display: none; }
+    .card:not(.collapsed) .collapsible-toggle .chev,
+    .day:not(.collapsed) .collapsible-toggle .chev,
+    .tip:not(.collapsed) .collapsible-toggle .chev { transform: rotate(90deg); }
   </style>
 </head>
 <body>
@@ -183,5 +207,44 @@
       Built for <strong>travel-penghu</strong> · GitHub Pages ready.
     </footer>
   </main>
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      const blocks = document.querySelectorAll('.card, .day, .tip');
+      const storageKey = 'travel-penghu-collapsed';
+      let saved = {};
+      try { saved = JSON.parse(localStorage.getItem(storageKey)) || {}; } catch(e) { saved = {}; }
+
+      blocks.forEach(function(el, idx){
+        const heading = el.querySelector('h2, h3, .tip > strong');
+        const title = heading ? heading.textContent.trim() : ('Section ' + (idx + 1));
+
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'collapsible-toggle';
+        btn.innerHTML = '<span class="title">' + title + '</span><span class="chev" aria-hidden>▸</span>';
+
+        const content = document.createElement('div');
+        content.className = 'collapsible-content';
+
+        if (heading) heading.remove();
+        while (el.firstChild) content.appendChild(el.firstChild);
+
+        el.appendChild(btn);
+        el.appendChild(content);
+
+        const id = el.getAttribute('data-collapsible-id') || ('s' + idx);
+        el.setAttribute('data-collapsible-id', id);
+
+        const collapsed = (saved[id] !== undefined) ? saved[id] : true; // default closed
+        if (collapsed) el.classList.add('collapsed');
+
+        btn.addEventListener('click', function(){
+          const isCollapsed = el.classList.toggle('collapsed');
+          saved[id] = isCollapsed;
+          try { localStorage.setItem(storageKey, JSON.stringify(saved)); } catch(e){}
+        });
+      });
+    });
+  </script>
 </body>
 </html>
