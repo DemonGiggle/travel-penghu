@@ -5,154 +5,648 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>澎湖 3 天旅遊規劃｜travel-penghu</title>
   <style>
+    @import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap");
+
     :root {
-      --bg: #f6fbff;
+      --sand: #f7efe3;
+      --paper: rgba(255, 255, 255, 0.84);
       --card: #ffffff;
-      --text: #0f172a;
-      --muted: #475569;
-      --primary: #0ea5e9;
-      --accent: #f97316;
-      --ok: #16a34a;
-      --shadow: 0 10px 25px rgba(2, 132, 199, 0.12);
+      --line: rgba(15, 23, 42, 0.09);
+      --text: #16324f;
+      --muted: #58708d;
+      --sea: #0f9ac8;
+      --sea-deep: #0b5f8c;
+      --sun: #ff9b54;
+      --leaf: #3a9d5d;
+      --night: #143a6b;
+      --shadow: 0 24px 60px rgba(15, 71, 115, 0.16);
+      --soft-shadow: 0 12px 30px rgba(15, 71, 115, 0.1);
     }
+
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
-      background: linear-gradient(180deg, #e0f2fe 0%, var(--bg) 30%, #ffffff 100%);
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
       color: var(--text);
-      line-height: 1.65;
+      line-height: 1.72;
+      background:
+        radial-gradient(circle at 12% 10%, rgba(255, 219, 148, 0.7), transparent 22%),
+        radial-gradient(circle at 88% 8%, rgba(100, 196, 255, 0.45), transparent 24%),
+        linear-gradient(180deg, #d7f0ff 0%, #edf9ff 24%, var(--sand) 100%);
     }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.14) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.14) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.45), transparent 80%);
+    }
+
     .wrap {
-      max-width: 980px;
+      max-width: 1180px;
       margin: 0 auto;
-      padding: 28px 18px 64px;
+      padding: 28px 18px 80px;
+      position: relative;
     }
+
     .hero {
-      background: radial-gradient(circle at top right, rgba(249, 115, 22, .15), transparent 40%),
-                  radial-gradient(circle at top left, rgba(14, 165, 233, .2), transparent 45%),
-                  var(--card);
-      border-radius: 18px;
-      padding: 26px;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.9)),
+        linear-gradient(160deg, rgba(15, 154, 200, 0.09), rgba(255, 155, 84, 0.1));
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 30px;
       box-shadow: var(--shadow);
-      border: 1px solid #e2e8f0;
+      padding: 28px;
     }
-    h1 { margin: 0 0 8px; font-size: clamp(1.5rem, 2.3vw, 2.2rem); }
-    h2 { margin: 24px 0 10px; font-size: 1.25rem; }
-    .muted { color: var(--muted); }
-    .badge {
-      display: inline-block;
-      background: #e0f2fe;
-      color: #075985;
-      border: 1px solid #bae6fd;
-      border-radius: 999px;
-      padding: 4px 10px;
-      margin-right: 6px;
-      font-size: 0.88rem;
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      right: -120px;
+      top: -140px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 170, 90, 0.28) 0%, rgba(255, 170, 90, 0) 68%);
     }
-    .grid {
-      margin-top: 18px;
+
+    .hero-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: minmax(0, 1.06fr) minmax(310px, 0.94fr);
+      gap: 24px;
+      align-items: start;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(15, 154, 200, 0.12);
+      border: 1px solid rgba(15, 154, 200, 0.16);
+      color: var(--sea-deep);
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    h1, h2, h3, h4 {
+      margin: 0;
+      font-family: "M PLUS Rounded 1c", "Noto Sans TC", sans-serif;
+      letter-spacing: 0.01em;
+    }
+
+    h1 {
+      margin-top: 16px;
+      font-size: clamp(2rem, 3.6vw, 3.5rem);
+      line-height: 1.08;
+    }
+
+    .hero-copy p,
+    .muted {
+      color: var(--muted);
+    }
+
+    .hero-copy p {
+      margin: 14px 0 0;
+      font-size: 1.02rem;
+      max-width: 58ch;
+    }
+
+    .badge-row,
+    .mini-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .badge-row {
+      margin-top: 18px;
+    }
+
+    .badge,
+    .mini-badge {
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 700;
+    }
+
+    .badge {
+      padding: 7px 12px;
+      background: rgba(255, 255, 255, 0.8);
+      border-color: rgba(15, 95, 140, 0.12);
+      color: var(--sea-deep);
+      box-shadow: 0 10px 24px rgba(15, 71, 115, 0.08);
+    }
+
+    .mini-badge {
+      padding: 6px 10px;
+      font-size: 0.85rem;
+      background: #f6fbff;
+      border-color: rgba(15, 95, 140, 0.1);
+      color: #355a79;
+    }
+
+    .hero-panels {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
+      margin-top: 22px;
     }
-    .card {
-      background: var(--card);
-      border: 1px solid #e2e8f0;
-      border-radius: 14px;
-      padding: 16px;
-      box-shadow: 0 4px 12px rgba(15, 23, 42, .05);
+
+    .glass-card {
+      background: var(--paper);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      border-radius: 22px;
+      box-shadow: var(--soft-shadow);
+      padding: 18px;
     }
+
+    .glass-card h2 {
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+    }
+
     .timeline {
       margin: 0;
-      padding-left: 18px;
+      padding-left: 20px;
     }
-    .timeline li { margin: 6px 0; }
-    .day {
-      margin-top: 24px;
-      background: var(--card);
-      border: 1px solid #e2e8f0;
-      border-left: 6px solid var(--primary);
-      border-radius: 14px;
-      padding: 18px;
-      box-shadow: 0 4px 12px rgba(15, 23, 42, .05);
-    }
-    .day h3 { margin: 0 0 8px; font-size: 1.1rem; }
-    .tip {
-      margin-top: 18px;
-      background: #fff7ed;
-      border: 1px solid #fed7aa;
-      border-radius: 12px;
-      padding: 14px;
-    }
-    .tip strong { color: #9a3412; }
-    .ok { color: var(--ok); font-weight: 600; }
-    footer {
-      margin-top: 26px;
-      font-size: .9rem;
-      color: #64748b;
-    }
-    a { color: #0369a1; }
 
-    /* Collapsible sections: default closed, remember via localStorage */
+    .timeline li { margin: 8px 0; }
+
+    .route-strip {
+      margin-top: 20px;
+      padding: 18px 18px 16px;
+      border-radius: 22px;
+      background: linear-gradient(145deg, rgba(20, 58, 107, 0.95), rgba(15, 95, 140, 0.92));
+      color: #eff8ff;
+      box-shadow: 0 22px 40px rgba(10, 45, 84, 0.22);
+    }
+
+    .route-strip h2 {
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    .route-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .route-pills span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .map-shell {
+      position: relative;
+      padding: 14px;
+      border-radius: 28px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(241, 251, 255, 0.96)),
+        linear-gradient(160deg, rgba(15, 154, 200, 0.18), rgba(255, 155, 84, 0.18));
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+    }
+
+    .map-shell::before {
+      content: "親子版景點地圖";
+      position: absolute;
+      left: 20px;
+      top: -12px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #0f9ac8, #0b5f8c);
+      color: #fff;
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      box-shadow: 0 12px 24px rgba(15, 95, 140, 0.22);
+    }
+
+    .map-shell img {
+      display: block;
+      width: 100%;
+      border-radius: 20px;
+      border: 1px solid rgba(15, 95, 140, 0.1);
+      box-shadow: 0 14px 36px rgba(15, 71, 115, 0.12);
+      object-fit: cover;
+      background: #fff;
+    }
+
+    .map-caption {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .caption-box {
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(15, 95, 140, 0.1);
+    }
+
+    .caption-box h3 {
+      font-size: 0.98rem;
+      margin-bottom: 6px;
+    }
+
+    .caption-box p {
+      margin: 0;
+      font-size: 0.93rem;
+      color: var(--muted);
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: end;
+      margin: 34px 0 16px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.35rem, 2vw, 2rem);
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 56ch;
+    }
+
+    .map-guide {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .guide-card,
+    .legend-card,
+    .day,
+    .tip {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      border-radius: 24px;
+      box-shadow: var(--soft-shadow);
+      padding: 22px;
+    }
+
+    .guide-card h3,
+    .legend-card h3,
+    .day h3 {
+      font-size: 1.12rem;
+      margin-bottom: 10px;
+    }
+
+    .legend-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .legend-item {
+      padding: 14px 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(15, 95, 140, 0.1);
+      background: linear-gradient(180deg, rgba(246, 251, 255, 0.95), rgba(255, 255, 255, 0.94));
+    }
+
+    .legend-item strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 0.96rem;
+    }
+
+    .legend-item span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .poi-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .poi {
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(250, 252, 255, 0.96);
+      border: 1px solid rgba(15, 95, 140, 0.08);
+    }
+
+    .poi strong {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+      font-size: 0.96rem;
+    }
+
+    .poi strong::before {
+      content: attr(data-no);
+      display: inline-grid;
+      place-items: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #ef4444;
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    .poi p,
+    .tip p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .day {
+      margin-top: 22px;
+      border-left: 8px solid var(--sea);
+    }
+
+    .day:nth-of-type(even) {
+      border-left-color: var(--sun);
+    }
+
+    .tip {
+      margin-top: 22px;
+      background: linear-gradient(180deg, rgba(255, 247, 237, 0.94), rgba(255, 255, 255, 0.95));
+      border-color: rgba(255, 155, 84, 0.2);
+    }
+
+    .tip strong {
+      color: #9a3412;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    .ok { color: var(--leaf); font-weight: 700; }
+
+    footer {
+      margin-top: 30px;
+      padding: 18px 6px 0;
+      color: #6b8098;
+      font-size: 0.92rem;
+    }
+
+    a { color: var(--sea-deep); }
+
     .collapsible-toggle {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 16px;
       width: 100%;
       background: transparent;
       border: none;
       padding: 0;
-      font-size: inherit;
+      color: inherit;
       text-align: left;
       cursor: pointer;
     }
-    .collapsible-toggle:focus { outline: 2px solid rgba(14,165,233,0.25); border-radius: 6px; }
-    .collapsible-toggle .title { font-weight: 700; }
-    .collapsible-toggle .chev { display: inline-block; transition: transform .18s ease; margin-left: 8px; }
-    .collapsible-content { margin-top: 12px; }
-    .card.collapsed .collapsible-content,
+
+    .collapsible-toggle:focus {
+      outline: 2px solid rgba(15, 154, 200, 0.25);
+      outline-offset: 6px;
+      border-radius: 10px;
+    }
+
+    .collapsible-toggle .title {
+      font-family: "M PLUS Rounded 1c", sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+    }
+
+    .collapsible-toggle .chev {
+      display: inline-block;
+      transition: transform .18s ease;
+      color: var(--sea-deep);
+      margin-left: auto;
+    }
+
+    .collapsible-content { margin-top: 14px; }
+
+    .guide-card.collapsed .collapsible-content,
+    .legend-card.collapsed .collapsible-content,
     .day.collapsed .collapsible-content,
     .tip.collapsed .collapsible-content { display: none; }
-    .card:not(.collapsed) .collapsible-toggle .chev,
+
+    .guide-card:not(.collapsed) .collapsible-toggle .chev,
+    .legend-card:not(.collapsed) .collapsible-toggle .chev,
     .day:not(.collapsed) .collapsible-toggle .chev,
     .tip:not(.collapsed) .collapsible-toggle .chev { transform: rotate(90deg); }
+
+    @media (max-width: 920px) {
+      .hero-grid,
+      .map-guide,
+      .hero-panels,
+      .poi-list,
+      .map-caption {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 22px;
+      }
+
+      .section-head {
+        flex-direction: column;
+        align-items: start;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .wrap {
+        padding-inline: 14px;
+        padding-bottom: 60px;
+      }
+
+      h1 {
+        font-size: clamp(1.8rem, 9vw, 2.5rem);
+      }
+
+      .hero,
+      .guide-card,
+      .legend-card,
+      .day,
+      .tip {
+        border-radius: 20px;
+      }
+    }
   </style>
 </head>
 <body>
   <main class="wrap">
     <section class="hero">
-      <h1>澎湖 3 天旅遊規劃（7/7–7/9）</h1>
-      <p class="muted">主題：海景放鬆、在地美食、花火節夜間行程。已依最新航班、住宿與煙火安排更新。</p>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">7/7–7/9 澎湖 3 天 2 夜</span>
+          <h1>把這張澎湖景點地圖<br />真的變成旅程入口</h1>
+          <p>這次不是把圖片硬塞進頁面，而是把它當成「親子版景點索引」：先用可愛地圖建立方向感，再把景點編號對回實際行程，視覺和資訊才會站在同一邊。</p>
+
+          <div class="badge-row">
+            <span class="badge">本島為主</span>
+            <span class="badge">花火節夜間行程</span>
+            <span class="badge">北環經典路線</span>
+            <span class="badge">親子友善導覽</span>
+          </div>
+
+          <div class="hero-panels">
+            <article class="glass-card">
+              <h2>交通資訊</h2>
+              <ul class="timeline">
+                <li>去程：<strong>2026/07/07（二）B78617</strong>｜台北（TSA）13:55 → 澎湖（MZG）14:45｜訂位艙等：Y</li>
+                <li>回程：<strong>2026/07/09（四）B78608</strong>｜澎湖（MZG）10:10 → 台北（TSA）11:05</li>
+                <li>航空公司：立榮航空</li>
+                <li>建議：抵達後先入住或放行李，7/7 晚上直上觀音亭煙火。</li>
+              </ul>
+            </article>
+
+            <article class="glass-card">
+              <h2>住宿與預算</h2>
+              <ul class="timeline">
+                <li>住宿：<strong>邂逅老街精緻民宿</strong></li>
+                <li><a href="https://maps.app.goo.gl/orLCxTqFbK23BAfB8?g_st=ac" target="_blank" rel="noopener">Google Maps 位置</a></li>
+                <li>機票已完成訂位，來回航班時間已確認。</li>
+                <li>餐食：NT$1,500–2,500</li>
+                <li>租車/油資/門票：NT$1,000–2,000</li>
+              </ul>
+              <p class="ok">其餘費用可依實際房價、租車與餐飲安排再微調。</p>
+            </article>
+          </div>
+
+          <section class="route-strip" aria-label="快速動線摘要">
+            <h2>快速動線摘要</h2>
+            <p>Day 1 以市區和夜景暖身，Day 2 用這張地圖把北環主軸和親子景點串起來，Day 3 留給伴手禮與輕鬆收尾。</p>
+            <div class="route-pills">
+              <span>1 觀音亭煙火</span>
+              <span>4 奎壁山</span>
+              <span>6 跨海大橋</span>
+              <span>8 鯨魚洞</span>
+              <span>13 內垵夕陽</span>
+              <span>14 山水觀星</span>
+            </div>
+          </section>
+        </div>
+
+        <div class="map-shell">
+          <img src="assets/penghu-scenic-map.jpg" alt="澎湖景點地圖，標出 14 個景點與歷史古蹟、自然地景、特色景觀、夜間景點分類。" />
+          <div class="map-caption">
+            <div class="caption-box">
+              <h3>這張圖適合怎麼擺</h3>
+              <p>它是直式、資訊量高、插畫感重，最適合當桌面版右欄焦點與手機版第一張主視覺，不適合塞進長文中段。</p>
+            </div>
+            <div class="caption-box">
+              <h3>這次版面策略</h3>
+              <p>先讓地圖吸住目光，再用下方對照卡片把「可愛插畫」翻譯成「今天真的要去哪裡」。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-head">
       <div>
-        <span class="badge">3 天 2 夜</span>
-        <span class="badge">本島為主</span>
-        <span class="badge">含花火節</span>
+        <h2>景點地圖怎麼接到行程</h2>
+        <p>這張圖其實很適合做旅遊網站的轉譯層。右側分類清楚、景點編號明確，剛好能把使用者從「想看什麼」帶去「今天怎麼走」。</p>
       </div>
-
-      <div class="grid">
-        <article class="card">
-          <h2>交通資訊</h2>
-          <ul class="timeline">
-            <li>去程：<strong>2026/07/07（二）B78617</strong>｜台北（TSA）13:55 → 澎湖（MZG）14:45｜訂位艙等：Y</li>
-            <li>回程：<strong>2026/07/09（四）B78608</strong>｜澎湖（MZG）10:10 → 台北（TSA）11:05</li>
-            <li>航空公司：立榮航空</li>
-            <li>建議：去程抵達後直接入住或放行李，7/7 晚上安排觀音亭煙火；回程日請提早完成早餐、退房與還車。</li>
-          </ul>
-        </article>
-
-        <article class="card">
-          <h2>住宿與預算</h2>
-          <ul class="timeline">
-            <li>住宿：<strong>邂逅老街精緻民宿</strong></li>
-            <li><a href="https://maps.app.goo.gl/orLCxTqFbK23BAfB8?g_st=ac" target="_blank" rel="noopener">Google Maps 位置</a></li>
-            <li>機票已完成訂位，來回航班時間已確認。</li>
-            <li>餐食：NT$1,500–2,500</li>
-            <li>租車/油資/門票：NT$1,000–2,000</li>
-          </ul>
-          <p class="ok">其餘費用可依實際房價、租車與餐飲安排再微調。</p>
-        </article>
+      <div class="mini-badges" aria-label="地圖亮點">
+        <span class="mini-badge">歷史古蹟 5 點</span>
+        <span class="mini-badge">自然地景 5 點</span>
+        <span class="mini-badge">特色景觀 3 點</span>
+        <span class="mini-badge">夜間景點 1 點</span>
       </div>
+    </div>
+
+    <section class="map-guide">
+      <article class="guide-card">
+        <h3>放進版面的理由</h3>
+        <ol class="timeline">
+          <li><strong>視覺語氣一致：</strong>澎湖本來就適合亮色、海風、親子感。這張圖的插畫線條夠輕鬆，能替原本站穩住氣氛。</li>
+          <li><strong>編號很實用：</strong>1–14 的編號能直接轉成 itinerary 導覽點，使用者不必先讀一大段文字。</li>
+          <li><strong>分類天然可拆：</strong>右邊「歷史古蹟／自然地景／特色景觀／夜間景點」很適合抽成摘要卡，避免圖片只是裝飾。</li>
+          <li><strong>直式圖不浪費：</strong>桌面版放右欄可保留完整圖面；手機版會自然下移成第一個重點區塊，不會被壓扁。</li>
+        </ol>
+
+        <div class="poi-list" aria-label="景點對照">
+          <article class="poi">
+            <strong data-no="1">觀音亭</strong>
+            <p>Day 1 晚上煙火主場，負責把旅程一開場就拉到最有澎湖感的節奏。</p>
+          </article>
+          <article class="poi">
+            <strong data-no="4">奎壁山</strong>
+            <p>Day 2 最先跑，因為潮汐和光線都比心情更有主導權。</p>
+          </article>
+          <article class="poi">
+            <strong data-no="6">跨海大橋</strong>
+            <p>北環中段的經典照片點，短停最剛好，不必待太久。</p>
+          </article>
+          <article class="poi">
+            <strong data-no="8">鯨魚洞</strong>
+            <p>畫面辨識度高，但偏曬，排成下午快閃站最聰明。</p>
+          </article>
+          <article class="poi">
+            <strong data-no="13">內垵遊憩區</strong>
+            <p>傍晚放鬆最漂亮，這站就是拿來收海風和日落的。</p>
+          </article>
+          <article class="poi">
+            <strong data-no="14">山水觀星公園</strong>
+            <p>地圖上的唯一夜間景點，剛好接住 Day 2 晚上的星空尾聲。</p>
+          </article>
+        </div>
+      </article>
+
+      <aside class="legend-card">
+        <h3>右側分類摘要</h3>
+        <div class="legend-grid">
+          <div class="legend-item">
+            <strong>歷史古蹟</strong>
+            <span>觀音亭、天后宮、四眼井、龍門閉鎖陣地、二崁聚落</span>
+          </div>
+          <div class="legend-item">
+            <strong>自然地景</strong>
+            <span>奎壁山、鯨魚洞、大菓葉玄武岩、池西岩瀑、池西虎目滬</span>
+          </div>
+          <div class="legend-item">
+            <strong>特色景觀</strong>
+            <span>跨海大橋、通梁古榕、內垵遊憩區</span>
+          </div>
+          <div class="legend-item">
+            <strong>夜間景點</strong>
+            <span>山水觀星公園，放在旅程尾段最有味道。</span>
+          </div>
+        </div>
+      </aside>
     </section>
 
     <section class="day">
@@ -235,7 +729,7 @@
 
     <section class="tip">
       <strong>花火節提醒：</strong>
-      本次行程日期為 7/7–7/9；若有安排花火節或夜間活動，實際施放日期/時間、無人機場次、是否因天候取消，請以「澎湖國際海上花火節官方公告」為準。
+      <p>本次行程日期為 7/7–7/9；若有安排花火節或夜間活動，實際施放日期/時間、無人機場次、是否因天候取消，請以「澎湖國際海上花火節官方公告」為準。</p>
     </section>
 
     <footer>
@@ -243,40 +737,56 @@
     </footer>
   </main>
   <script>
-    document.addEventListener('DOMContentLoaded', function(){
-      const blocks = document.querySelectorAll('.card, .day, .tip');
-      const storageKey = 'travel-penghu-collapsed';
+    document.addEventListener("DOMContentLoaded", function () {
+      const blocks = document.querySelectorAll(".guide-card, .legend-card, .day, .tip");
+      const storageKey = "travel-penghu-collapsed";
       let saved = {};
-      try { saved = JSON.parse(localStorage.getItem(storageKey)) || {}; } catch(e) { saved = {}; }
 
-      blocks.forEach(function(el, idx){
-        const heading = el.querySelector('h2, h3, .tip > strong');
-        const title = heading ? heading.textContent.trim() : ('Section ' + (idx + 1));
+      try {
+        saved = JSON.parse(localStorage.getItem(storageKey)) || {};
+      } catch (error) {
+        saved = {};
+      }
 
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'collapsible-toggle';
-        btn.innerHTML = '<span class="title">' + title + '</span><span class="chev" aria-hidden>▸</span>';
+      blocks.forEach(function (el, idx) {
+        const heading = el.querySelector("h3, .tip > strong");
+        const title = heading ? heading.textContent.trim() : ("Section " + (idx + 1));
 
-        const content = document.createElement('div');
-        content.className = 'collapsible-content';
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "collapsible-toggle";
+        btn.innerHTML = '<span class="title">' + title + '</span><span class="chev" aria-hidden="true">▸</span>';
 
-        if (heading) heading.remove();
-        while (el.firstChild) content.appendChild(el.firstChild);
+        const content = document.createElement("div");
+        content.className = "collapsible-content";
+
+        if (heading) {
+          heading.remove();
+        }
+
+        while (el.firstChild) {
+          content.appendChild(el.firstChild);
+        }
 
         el.appendChild(btn);
         el.appendChild(content);
 
-        const id = el.getAttribute('data-collapsible-id') || ('s' + idx);
-        el.setAttribute('data-collapsible-id', id);
+        const id = el.getAttribute("data-collapsible-id") || ("s" + idx);
+        el.setAttribute("data-collapsible-id", id);
 
-        const collapsed = (saved[id] !== undefined) ? saved[id] : true; // default closed
-        if (collapsed) el.classList.add('collapsed');
+        const collapsed = (saved[id] !== undefined) ? saved[id] : true;
+        if (collapsed) {
+          el.classList.add("collapsed");
+        }
 
-        btn.addEventListener('click', function(){
-          const isCollapsed = el.classList.toggle('collapsed');
+        btn.addEventListener("click", function () {
+          const isCollapsed = el.classList.toggle("collapsed");
           saved[id] = isCollapsed;
-          try { localStorage.setItem(storageKey, JSON.stringify(saved)); } catch(e){}
+
+          try {
+            localStorage.setItem(storageKey, JSON.stringify(saved));
+          } catch (error) {
+          }
         });
       });
     });
